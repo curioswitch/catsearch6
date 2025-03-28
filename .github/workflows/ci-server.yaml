@@ -28,4 +28,5 @@ jobs:
     with:
       project_dir: server
       service: catsearch-server
+      deploy_dev: false
     secrets: inherit
