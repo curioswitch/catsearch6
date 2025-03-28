@@ -1,0 +1,31 @@
+name: Server CI
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - server/**
+      - .github/workflows/ci-server.yaml
+      - .github/workflows/_check-go.yaml
+      - .github/workflows/_docker-go.yaml
+  pull_request:
+    paths:
+      - server/**
+      - .github/workflows/ci-server.yaml
+      - .github/workflows/_check-go.yaml
+      - .github/workflows/_docker-go.yaml
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  actions: read
+  contents: read
+  id-token: write
+
+jobs:
+  ci:
+    uses: curioswitch/go-curiostack/.github/workflows/export-go-server-ci.yaml@fd0bb61eb110f5cae7182f020b3892a627eaaf45
+    with:
+      project_dir: server
+      service: catsearch-server
+    secrets: inherit

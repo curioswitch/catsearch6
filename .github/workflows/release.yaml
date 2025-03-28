@@ -1,0 +1,16 @@
+name: Release Build
+
+on:
+  push:
+    branches:
+      - release/**
+
+permissions:
+  actions: read
+  contents: read
+  id-token: write
+
+jobs:
+  server:
+    uses: ./.github/workflows/ci-server.yaml
+    secrets: inherit
